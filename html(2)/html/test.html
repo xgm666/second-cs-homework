@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .selected {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <td>单元格1</td>
+      <td>单元格2</td>
+    </tr>
+    <tr>
+      <td>单元格3</td>
+      <td>单元格4</td>
+    </tr>
+  </table>
+
+  <script>
+    var selectedCell = null; // 用于存储当前选中的单元格
+
+    // 获取所有单元格元素
+    var cells = document.getElementsByTagName('td');
+
+    // 遍历每个单元格，并为其添加事件处理程序
+    for (var i = 0; i < cells.length; i++) {
+      var cell = cells[i];
+
+      // 添加鼠标点击事件处理程序
+      cell.addEventListener('click', function() {
+        // 移除之前选中的单元格的样式
+        if (selectedCell) {
+          selectedCell.classList.remove('selected');
+        }
+
+        // 设置当前选中的单元格
+        selectedCell = this;
+
+        // 设置当前选中的单元格的样式
+        this.classList.add('selected');
+
+        // 在这里可以执行其他针对选中单元格的操作
+        console.log('当前选中的单元格内容是:' + this.textContent);
+      });
+    }
+  </script>
+</body>
+</html>
